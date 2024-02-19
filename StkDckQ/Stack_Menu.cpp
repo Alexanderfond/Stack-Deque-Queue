@@ -85,12 +85,7 @@ void Stack_Menu() {
                     break;
                 }
                 
-                
-
-            case 9:
-                std::cout << "Исходный стек: " << std::endl;
-                stack.display();
-                break;
+           
 
             case 2:
                 std::cout << "swapFirstAndLast" << std::endl;
@@ -137,7 +132,12 @@ void Stack_Menu() {
                 stack.removeAllExceptLast();
                 stack.display();
                 break;
-                
+
+            case 9:
+                std::cout << "Исходный стек: " << std::endl;
+                stack.display();
+                break;
+
             case 10:
                 stack.writeToFile();
                 break;
