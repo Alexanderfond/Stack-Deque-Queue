@@ -17,36 +17,59 @@ Deque::~Deque() {
     delete[] data;
 }
 
+//Проверка на пустоту
 bool Deque::isEmpty() {
     return front == -1 && rear == -1;
 }
 
-void Deque::addToFront(int value) {
-    if (isEmpty()) {
-        front = rear = 0;
-        data[front] = value;
-    }
-    else if (front > 0) {
-        data[--front] = value;
-    }
-    else {
-        std::cout << "Дек переполнен с передней стороны" << std::endl;
-    }
+//Проерить конец на пустоту
+bool Deque::isRearEmpty() {
+    return rear == -1;
 }
 
-void Deque::addToRear(int value) {
-    if (isEmpty()) {
-        front = rear = 0;
-        data[rear] = value;
-    }
-    else if (rear < size - 1) {
-        data[++rear] = value;
-    }
-    else {
-        std::cout << "Дек переполнен с задней стороны" << std::endl;
-    }
+
+
+void Deque::AddSize() {
+    size += 1;
 }
 
+//Добавить элемент в начало
+void Deque::addToFront(int element) {
+    if (isEmpty()) {
+        front = 0;
+        rear = 0;
+    }
+    else if (front == 0) {
+        AddSize();
+        for (int i = rear; i >= front; --i) {
+            data[i + 1] = data[i];
+        }
+        rear++;
+    }
+    else {
+        front--;
+    }
+    data[front] = element;
+}
+
+
+//Добавить элемент в конец
+void Deque::addToRear(int element) {
+    if (isEmpty()) {
+        front = 0;
+        rear = 0;
+    }
+    else if (rear == size - 1) {
+        AddSize();
+        rear++;
+    }
+    else {
+        rear++;
+    }
+    data[rear] = element;
+}
+
+//Прочитать последний элемент
 int Deque::readRear() {
     if (!isRearEmpty()) {
         return data[rear];
@@ -57,10 +80,7 @@ int Deque::readRear() {
     }
 }
 
-bool Deque::isRearEmpty() {
-    return rear == -1;
-}
-
+//Вывести деку
 void Deque::display() {
     if (isEmpty()) {
         std::cout << "Дек пуст" << std::endl;
@@ -73,6 +93,7 @@ void Deque::display() {
     
 }
 
+//Сохранить в файл
 void Deque::saveToFile() {
     std::ofstream file("data_Deque.txt");
     if (file.is_open()) {

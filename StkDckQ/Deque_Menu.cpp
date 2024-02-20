@@ -30,7 +30,7 @@ void Deque_Menu() {
 
         switch (choice) {
         case 1:
-            std::cout << "\nЗ клавіатури - 1\nЗ файлу - 2";
+            std::cout << "\nЗ клавіатури - 1\nЗ файлу - 2\nВаш варіант: ";
             std::cin >> fillingVariant;
 
             switch (fillingVariant) {

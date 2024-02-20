@@ -18,13 +18,14 @@ void Stack_Menu() {
             << "\t Заповнити - 1\n"
 
             << "\t Поміняти місцями перший та останній елементи - 2\n"
-            << "\t Розвернути - 3"
+            << "\t Розвернути - 3\n"
             << "\t Видалити кожен другий елемент - 4\n"
             << "\t Вставити новий елемент після максимального - 5\n"
             << "\t видалити мінімальний елемент - 6\n"
             << "\t Видалити все окрім першиго елемента - 7\n"
             << "\t Видалити все окрім останнього елемента - 8\n"
-            << "\t Вивести на екран - 9 \n";
+            << "\t Вивести на екран - 9 \n"
+            << "\t Зберегти у файл - 10\n";
 
         std::cout << "Your choise: ";
         std::cin >> choise_key;
@@ -37,8 +38,8 @@ void Stack_Menu() {
                 
                 std::cout << "\t"
                           << "\n З клавіатури - 1"
-                          << "\n З файлу"
-                          << "\n\t Оберіть варіант:  ";
+                          << "\n З файлу - 2"
+                          << "\n\t Оберіть варіант: ";
                 std::cin >> fillingVariant;
 
                 switch (fillingVariant) {
@@ -85,7 +86,7 @@ void Stack_Menu() {
                     break;
                 }
                 
-           
+                break;
 
             case 2:
                 std::cout << "swapFirstAndLast" << std::endl;
@@ -101,17 +102,13 @@ void Stack_Menu() {
 
             case 4:
                 std::cout << "removeEverySecond" << std::endl;
-                stack.removeEverySecond(); //
+                stack.removeEverySecond(); 
                 stack.display();
                 break;
 
             case 5:
                 std::cout << "insertAfterMax" << std::endl;
-                int user_value;
-                std::cout << "Enter your value: ";
-                std::cin >> user_value;
-
-                stack.insertAfterMax(user_value);
+                stack.insertAfterMax();
                 stack.display();
                 break;
 
@@ -148,6 +145,3 @@ void Stack_Menu() {
         }
     } while (choise_key != 0);
 }
-
-
-

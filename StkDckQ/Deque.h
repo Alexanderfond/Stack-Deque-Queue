@@ -16,6 +16,7 @@ public:
     void display();
     void saveToFile();
 
+    void AddSize();
 private:
     int* data;
     int size;

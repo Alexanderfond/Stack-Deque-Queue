@@ -33,10 +33,12 @@ int Queue::dequeue() {
     return data[front++];
 }
 
+//Количество элементов
 int Queue::sizeQ() {
     return rear - front + 1;
 }
 
+//Найти и вывести среднее
 double Queue::average() {
     double sum = 0;
     int count = 0;
@@ -47,6 +49,7 @@ double Queue::average() {
     return count > 0 ? sum / count : 0.0;
 }
 
+//Мин значение
 int Queue::minValue() {
     int minValue = data[front];
     for (int i = front; i <= rear; i++) {
@@ -57,6 +60,7 @@ int Queue::minValue() {
     return minValue;
 }
 
+//Макс значение
 int Queue::maxValue() {
     int maxValue = data[front];
     for (int i = front; i <= rear; i++) {
@@ -67,6 +71,7 @@ int Queue::maxValue() {
     return maxValue;
 }
 
+//Элемент перед минимальным
 int Queue::elementBeforeMin() {
     int minimal = minValue();
     int index = front;
@@ -79,6 +84,7 @@ int Queue::elementBeforeMin() {
     return -1;
 }
 
+//Вывести очередь
 void Queue::display() {
     for (int i = front; i <= rear; i++) {
         std::cout << data[i] << " ";
@@ -86,6 +92,7 @@ void Queue::display() {
     std::cout << std::endl;
 }
 
+//Сохранить в файл
 void Queue::saveToFile(const char* filename) {
     std::ofstream file(filename);
     if (file.is_open()) {

@@ -46,29 +46,57 @@ void Stack::swapFirstAndLast() {
 }
 
 // Функция для разворота стека
+//void Stack::reverse() {
+//    int* temp = new int[size];
+//    for (int i = 0; i <= top; i++) {
+//        temp[i] = data[top - i];
+//    }
+//    delete[] data;
+//    data = temp;
+//}
+
 void Stack::reverse() {
     int* temp = new int[size];
-    for (int i = 0; i <= top; i++) {
-        temp[i] = data[top - i];
+    int j = 0;
+    for (int i = top; i >= 0; i--) {
+        temp[j++] = data[i];
     }
-    delete[] data;
-    data = temp;
+    for (int i = 0; i <= top; i++) {
+        data[i] = temp[i];
+    }
+    delete[] temp;
 }
 
 // Функция для удаления каждого второго элемента
+//void Stack::removeEverySecond() {
+//    if (top >= 0) {
+//        for (int i = 1; i <= top; i += 2) {
+//            for (int j = i; j < top; j++) {
+//                data[j] = data[j + 1];
+//            }
+//            top--;
+//        }
+//    }
+//}
+
 void Stack::removeEverySecond() {
     if (top >= 0) {
-        for (int i = 1; i <= top; i += 2) {
-            for (int j = i; j < top; j++) {
-                data[j] = data[j + 1];
-            }
-            top--;
+        int currentIndex = 0; 
+        for (int i = 0; i <= top; i += 2) {
+            data[currentIndex++] = data[i]; 
         }
+        top = currentIndex - 1; 
     }
 }
 
+void Stack::AddSize() {
+    size += 1;
+}
+
 // Функция для вставки 0 после максимального элемента
-void Stack::insertAfterMax(int user_value) {                                      ///////////////
+void Stack::insertAfterMax() {                                      ///////////////
+    AddSize();
+    
     int maxIndex = 0;
     int maxValue = data[0];
     for (int i = 1; i <= top; i++) {
@@ -81,10 +109,14 @@ void Stack::insertAfterMax(int user_value) {                                    
         for (int i = top + 1; i > maxIndex; i--) {
             data[i] = data[i - 1];
         }
-        data[maxIndex + 1] = user_value;
+        data[maxIndex + 1] = 0;
         top++;
     }
 }
+
+
+
+
 
 // Функция для удаления минимального элемента
 void Stack::removeMin() {

@@ -13,13 +13,14 @@ public:
     void swapFirstAndLast();
     void reverse();
     void removeEverySecond();
-    void insertAfterMax(int user_value);
+    void insertAfterMax();
     void removeMin();
     void removeAllExceptFirst();
     void removeAllExceptLast();
     void display();
     void writeToFile();
 
+    void AddSize();
 private:
     int* data;
     int size;
